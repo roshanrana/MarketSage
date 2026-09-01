@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+
+# Node
+node_modules/
+dist/
+.next/
+coverage/
+*.tsbuildinfo
+
+# Go
+bin/
+*.test
+
+# Local data and secrets
+.env
+.env.*
+!.env.example
+data/local/
+*.duckdb
+*.duckdb.wal
+*.db
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

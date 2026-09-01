@@ -1,0 +1,20 @@
+{
+  "name": "@marketsage/mcp-cli",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit && npm run smoke",
+    "smoke": "tsx src/index.ts --start-analytics",
+    "demo": "tsx src/index.ts --start-analytics"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

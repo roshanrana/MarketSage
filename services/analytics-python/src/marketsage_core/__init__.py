@@ -1,0 +1,1 @@
+"""MarketSage analytics domain package."""

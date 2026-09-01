@@ -1,0 +1,65 @@
+{
+  "notes": "Small deterministic evidence set for local demos. Text is illustrative and should not be treated as source filings.",
+  "evidence": [
+    {
+      "id": "ev-aapl-services-001",
+      "document_id": "financebench-seed-aapl-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "AAPL",
+      "title": "AAPL services revenue and margin context",
+      "text": "Apple services revenue expanded as subscriptions, payments, and cloud offerings contributed recurring gross profit. Hardware cycles still influence reported growth and margin mix.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    },
+    {
+      "id": "ev-aapl-supply-002",
+      "document_id": "financebench-seed-aapl-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "AAPL",
+      "title": "AAPL supply chain risk context",
+      "text": "Apple disclosed that supplier concentration, component availability, foreign exchange, and demand timing can pressure revenue, working capital, and product margin.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    },
+    {
+      "id": "ev-msft-cloud-001",
+      "document_id": "financebench-seed-msft-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "MSFT",
+      "title": "MSFT cloud revenue and AI capacity",
+      "text": "Microsoft cloud revenue growth remained tied to Azure consumption, enterprise renewals, AI infrastructure demand, and disciplined operating expense management.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    },
+    {
+      "id": "ev-jpm-credit-001",
+      "document_id": "financebench-seed-jpm-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "JPM",
+      "title": "JPM credit and deposit risk context",
+      "text": "JPMorgan credit performance depends on consumer health, commercial loan quality, interest rate conditions, deposit betas, and capital markets activity.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    },
+    {
+      "id": "ev-xom-cashflow-001",
+      "document_id": "financebench-seed-xom-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "XOM",
+      "title": "XOM commodity and cash flow context",
+      "text": "Exxon Mobil cash flow is sensitive to crude oil prices, refining margins, project execution, capital discipline, and shareholder distribution policy.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    },
+    {
+      "id": "ev-spy-market-001",
+      "document_id": "financebench-seed-spy-2025",
+      "dataset_id": "mteb/FinanceBenchRetrieval",
+      "ticker": "SPY",
+      "title": "SPY broad market risk context",
+      "text": "Broad market returns can be affected by earnings breadth, valuation, rates, inflation expectations, liquidity, and sector concentration.",
+      "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+      "license": "MIT"
+    }
+  ]
+}

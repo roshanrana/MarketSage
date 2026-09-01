@@ -1,0 +1,28 @@
+{
+  "name": "marketsage",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "description": "MCP-native market intelligence workbench powered by OpenBB and Hugging Face finance assets.",
+  "type": "module",
+  "workspaces": [
+    "clients/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "check": "node scripts/check-workspace.mjs",
+    "check:docs": "node scripts/check-docs.mjs",
+    "check:python": "uv run --project services/analytics-python ruff check . && uv run --project services/analytics-python pytest",
+    "check:go": "node scripts/check-go-format.mjs && cd services/mcp-gateway-go && go test ./... && go vet ./...",
+    "check:ts": "npm run check --workspace clients/mcp-cli --if-present",
+    "check:web": "npm run check --workspace apps/web --if-present",
+    "audit:deps": "npm audit --workspaces --audit-level=high && uv pip check --project services/analytics-python && cd services/mcp-gateway-go && go run golang.org/x/vuln/cmd/govulncheck@latest ./...",
+    "demo:mcp": "npm run demo --workspace clients/mcp-cli",
+    "dev:analytics": "uv run --project services/analytics-python uvicorn marketsage_api.app:create_app --factory --host 127.0.0.1 --port 8765",
+    "dev:mcp": "cd services/mcp-gateway-go && go run ./cmd/marketsage-mcp"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {}
+}

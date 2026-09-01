@@ -1,0 +1,88 @@
+{
+  "as_of": "2026-08-28T20:00:00Z",
+  "source_name": "MarketSage illustrative seed data",
+  "source_url": "https://github.com/roshanrana/marketsage",
+  "notes": "Small deterministic fixture set for local demos. Values are illustrative and not current market data.",
+  "instruments": {
+    "AAPL": {
+      "name": "Apple Inc.",
+      "price": 226.84,
+      "currency": "USD",
+      "change": 1.42,
+      "change_percent": 0.63,
+      "volume": 51234000,
+      "sector": "Technology",
+      "history": [
+        { "date": "2026-08-24", "close": 222.17, "volume": 48112000 },
+        { "date": "2026-08-25", "close": 223.08, "volume": 46245000 },
+        { "date": "2026-08-26", "close": 224.91, "volume": 50144000 },
+        { "date": "2026-08-27", "close": 225.42, "volume": 49388000 },
+        { "date": "2026-08-28", "close": 226.84, "volume": 51234000 }
+      ]
+    },
+    "MSFT": {
+      "name": "Microsoft Corporation",
+      "price": 509.31,
+      "currency": "USD",
+      "change": 3.84,
+      "change_percent": 0.76,
+      "volume": 22451000,
+      "sector": "Technology",
+      "history": [
+        { "date": "2026-08-24", "close": 499.62, "volume": 21441000 },
+        { "date": "2026-08-25", "close": 502.13, "volume": 21932000 },
+        { "date": "2026-08-26", "close": 505.48, "volume": 22987000 },
+        { "date": "2026-08-27", "close": 505.47, "volume": 20554000 },
+        { "date": "2026-08-28", "close": 509.31, "volume": 22451000 }
+      ]
+    },
+    "JPM": {
+      "name": "JPMorgan Chase & Co.",
+      "price": 289.64,
+      "currency": "USD",
+      "change": -0.91,
+      "change_percent": -0.31,
+      "volume": 8422000,
+      "sector": "Financial Services",
+      "history": [
+        { "date": "2026-08-24", "close": 292.11, "volume": 7792000 },
+        { "date": "2026-08-25", "close": 291.74, "volume": 8211000 },
+        { "date": "2026-08-26", "close": 290.88, "volume": 8049000 },
+        { "date": "2026-08-27", "close": 290.55, "volume": 7920000 },
+        { "date": "2026-08-28", "close": 289.64, "volume": 8422000 }
+      ]
+    },
+    "XOM": {
+      "name": "Exxon Mobil Corporation",
+      "price": 113.27,
+      "currency": "USD",
+      "change": 0.48,
+      "change_percent": 0.43,
+      "volume": 13994000,
+      "sector": "Energy",
+      "history": [
+        { "date": "2026-08-24", "close": 111.86, "volume": 12344000 },
+        { "date": "2026-08-25", "close": 112.14, "volume": 13220000 },
+        { "date": "2026-08-26", "close": 112.31, "volume": 12887000 },
+        { "date": "2026-08-27", "close": 112.79, "volume": 13045000 },
+        { "date": "2026-08-28", "close": 113.27, "volume": 13994000 }
+      ]
+    },
+    "SPY": {
+      "name": "SPDR S&P 500 ETF Trust",
+      "price": 649.18,
+      "currency": "USD",
+      "change": 2.67,
+      "change_percent": 0.41,
+      "volume": 58333000,
+      "sector": "ETF",
+      "history": [
+        { "date": "2026-08-24", "close": 641.92, "volume": 54112000 },
+        { "date": "2026-08-25", "close": 643.36, "volume": 56664000 },
+        { "date": "2026-08-26", "close": 645.83, "volume": 55230000 },
+        { "date": "2026-08-27", "close": 646.51, "volume": 54992000 },
+        { "date": "2026-08-28", "close": 649.18, "volume": 58333000 }
+      ]
+    }
+  }
+}

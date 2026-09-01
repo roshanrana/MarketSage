@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marketsage.local/schemas/marketsage.schema.json",
+  "title": "MarketSage Contracts",
+  "type": "object",
+  "$defs": {
+    "DependencyStatus": {
+      "type": "object",
+      "required": ["name", "status"],
+      "properties": {
+        "name": { "type": "string" },
+        "status": { "type": "string", "enum": ["ok", "degraded", "unavailable"] },
+        "detail": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "ConfigSummary": {
+      "type": "object",
+      "required": ["mode", "data_dir", "model_downloads_enabled", "http_auth_required"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["seeded", "live", "hybrid"] },
+        "data_dir": { "type": "string" },
+        "model_downloads_enabled": { "type": "boolean" },
+        "http_auth_required": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "HealthData": {
+      "type": "object",
+      "required": ["service", "status", "version", "config", "dependencies"],
+      "properties": {
+        "service": { "type": "string" },
+        "status": { "type": "string", "enum": ["ok", "degraded", "unavailable"] },
+        "version": { "type": "string" },
+        "config": { "$ref": "#/$defs/ConfigSummary" },
+        "dependencies": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/DependencyStatus" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "HealthEnvelope": {
+      "type": "object",
+      "required": ["request_id", "mode", "generated_at", "source", "data", "warnings", "caveats"],
+      "properties": {
+        "request_id": { "type": "string" },
+        "mode": { "type": "string", "enum": ["seeded", "live", "hybrid"] },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "source": { "type": "string" },
+        "data": { "$ref": "#/$defs/HealthData" },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "caveats": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  }
+}
