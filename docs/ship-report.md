@@ -59,4 +59,4 @@ Security/dependency sweep:
 
 ## Reviewer Story
 
-MarketSage shows the full path an FDE is expected to own: problem framing, architecture, integration, data provenance, LLM-facing MCP tools, a usable stakeholder UI, validation, security posture, and pragmatic tradeoffs.
+MarketSage shows the full path an implementation engineer is expected to own: problem framing, architecture, integration, data provenance, LLM-facing MCP tools, a usable stakeholder UI, validation, security posture, and pragmatic tradeoffs.

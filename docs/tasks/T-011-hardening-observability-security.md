@@ -10,7 +10,7 @@ Design References: docs/design/02-hld.md#cross-cutting-concerns, docs/design/03-
 
 ## Objective
 
-Harden MarketSage for a credible enterprise/FDE portfolio release.
+Harden MarketSage for a credible enterprise/implementation portfolio release.
 
 ## Definition Of Ready
 

@@ -4,7 +4,7 @@
 
 Investment analysts, treasury teams, and finance operators often have market data, filings, sentiment, and research notes spread across APIs, notebooks, terminals, and dashboards. LLMs can help synthesize this information, but they need trustworthy, structured, auditable access to tools and evidence instead of ad hoc copy/paste.
 
-MarketSage will be a portfolio-grade fintech product that exposes a traditional market intelligence application through MCP. It should demonstrate how an FDE can discover a real workflow, integrate existing systems, wrap them in safe agent interfaces, and ship a polished demo with operational discipline.
+MarketSage will be a portfolio-grade fintech product that exposes a traditional market intelligence application through MCP. It should demonstrate how an implementation engineer can discover a real workflow, integrate existing systems, wrap them in safe agent interfaces, and ship a polished demo with operational discipline.
 
 ## Product Shape
 
@@ -17,7 +17,7 @@ MarketSage is an MCP-native market intelligence workbench.
 
 ## Users And Workflows
 
-- FDE hiring reviewer: wants to see a complete product, clean architecture, sensible tradeoffs, reliable setup, and a demo that proves real integration.
+- Technical reviewer: wants to see a complete product, clean architecture, sensible tradeoffs, reliable setup, and a demo that proves real integration.
 - Buy-side or corporate treasury analyst: wants a ticker or portfolio brief with price movement, sentiment, document evidence, and clear source boundaries.
 - Platform engineer: wants a well-scoped MCP server with typed tools, input validation, logs, tests, and safe defaults.
 - AI application user: wants to ask natural-language market questions while the LLM calls tools and receives structured evidence.
@@ -80,13 +80,13 @@ MarketSage is an MCP-native market intelligence workbench.
 ## Constraints
 
 - Project path: `C:\Users\rosha\OneDrive\Documents\Code-Central\MarketSage`.
-- Target GitHub positioning: FDE portfolio product, not a toy MCP wrapper.
+- Target GitHub positioning: portfolio product, not a toy MCP wrapper.
 - Preferred stack: Go where applicable, Python for OpenBB/HF, TypeScript/React for clients.
 - Python should be managed through `uv` because direct `python` currently resolves to the Windows Store shim on this machine.
 - Local toolchain observed on 2026-08-31: Go 1.27.0, Node 24.14.0, npm 11.9.0, uv 0.11.23.
 - Do not switch to a materially different stack without user approval.
 
-## Portfolio Or FDE Signals
+## Portfolio Delivery Signals
 
 - Customer workflow framing: market brief, evidence search, and portfolio risk questions.
 - Real integration: OpenBB, MCP, Hugging Face datasets/models, and local persistence.
@@ -98,7 +98,7 @@ MarketSage is an MCP-native market intelligence workbench.
 
 - A-001: The user approves MarketSage as the local folder name and GitHub product name.
 - A-002: It is acceptable for the MVP to avoid trading or financial write actions.
-- A-003: Seeded/offline mode is required so hiring reviewers can run the project without private credentials.
+- A-003: Seeded/offline mode is required so technical reviewers can run the project without private credentials.
 - A-004: Go MCP gateway is worth a short spike because the official MCP SDK lists Go as Tier 1, but Python remains the fallback if the Go gateway adds more risk than value.
 - A-005: OpenBB license compatibility should be resolved before public release; default recommendation is AGPL-3.0-only if OpenBB remains a direct dependency.
 

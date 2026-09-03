@@ -6,11 +6,11 @@ Depends On: T-011
 Risk: low
 Suggested Agent Tier: small-dev
 Scope: `README.md`, `docs/ship-report.md`, demo scripts, screenshots or transcripts after behavior exists
-Design References: docs/design/04-execution-plan.md#validation-gates, docs/design/01-requirements.md#portfolio-or-fde-signals
+Design References: docs/design/04-execution-plan.md#validation-gates, docs/design/01-requirements.md#portfolio-delivery-signals
 
 ## Objective
 
-Package MarketSage as a GitHub-ready FDE portfolio product with a clear demo story.
+Package MarketSage as a GitHub-ready portfolio product with a clear demo story.
 
 ## Definition Of Ready
 
@@ -20,7 +20,7 @@ Package MarketSage as a GitHub-ready FDE portfolio product with a clear demo sto
 
 ## Acceptance Criteria
 
-- README explains product value, architecture, setup, demo workflow, and FDE signals.
+- README explains product value, architecture, setup, demo workflow, and delivery signals.
 - Demo script has 3 to 5 commands or prompts.
 - Ship report captures validation evidence, source/license notes, risks, and known limitations.
 - Screenshots or terminal transcript are included only after the behavior exists.
@@ -46,7 +46,7 @@ Package MarketSage as a GitHub-ready FDE portfolio product with a clear demo sto
 ## Handoff Notes
 
 - Packaging work completed 2026-09-01.
-- Replaced the README with current architecture, setup, MCP surface, validation, data modes, security posture, and FDE signals.
+- Replaced the README with current architecture, setup, MCP surface, validation, data modes, security posture, and delivery signals.
 - Added `docs/demo-script.md` with a 5 minute walkthrough.
 - Added `docs/ship-report.md` with validation evidence, source/license notes, known limitations, and reviewer story.
 - Added canonical AGPLv3 license text and set package metadata to `AGPL-3.0-only`.

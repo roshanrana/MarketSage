@@ -29,13 +29,13 @@ Status: proposed
 
 ### Context
 
-The user wants an FDE-oriented portfolio project, prefers OpenBB, wants Go incorporated where applicable, and wants complete MCP server/client interfacing.
+The user wants an implementation-oriented portfolio project, prefers OpenBB, wants Go incorporated where applicable, and wants complete MCP server/client interfacing.
 
 ### Options
 
 - Python-only MCP server: lowest risk and best OpenBB/HF ecosystem fit.
 - Use OpenBB MCP directly: fastest, but not enough original product surface.
-- Go MCP gateway plus Python analytics core: strongest FDE signal but higher integration complexity.
+- Go MCP gateway plus Python analytics core: strongest delivery signal but higher integration complexity.
 - TypeScript-only MCP server: convenient for web, but Python still fits OpenBB/HF better.
 
 ### Decision
@@ -99,7 +99,7 @@ Status: proposed
 
 ### Context
 
-FDE hiring reviewers need a demo that works quickly. Live finance APIs can need credentials, rate limits, network access, or provider-specific setup.
+Technical reviewers need a demo that works quickly. Live finance APIs can need credentials, rate limits, network access, or provider-specific setup.
 
 ### Options
 

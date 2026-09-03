@@ -78,7 +78,7 @@ A task is done when:
 - Low-risk leaf work: `gpt-5.6-luna` low or medium.
 - Escalate any implementation task that changes contracts, schemas, auth, live data behavior, concurrency, or deployment.
 
-## FDE Stack Signals
+## Implementation Stack Signals
 
 - Go: MCP gateway, service boundary, concurrency-ready backend, single-binary CLI/server potential.
 - Python: OpenBB integration, Hugging Face datasets/models, analytics workflows.

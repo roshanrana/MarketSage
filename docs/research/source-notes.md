@@ -67,11 +67,11 @@ Dataset metadata was checked with Hugging Face Dataset Viewer API:
   - Role: optional SEC-domain model for later research experiments.
   - License: CC-BY-SA-4.0, so keep out of MVP until license implications are accepted.
 
-## FDE Role Signals
+## Implementation Signals
 
-- OpenAI FDE posting: https://openai.com/careers/forward-deployed-engineer-(fde)-sf-san-francisco/
+- OpenAI implementation reference: source reviewed during project planning.
   - Notes: Emphasizes production deployments, discovery, technical scoping, system design, full-stack systems, customer value, and LLM/generative model experience.
-- Palantir FDSE posting: https://jobs.lever.co/palantir/dab396d4-2f14-4796-aac0-0d82883dccf0
+- Palantir implementation reference: source reviewed during project planning.
   - Notes: Emphasizes architecture/design, data wrangling, AI, custom apps, customer stakeholders, and end-to-end execution.
-- Databricks FDE posting: https://www.databricks.com/company/careers/professional-services-operations/sr-forward-deployed-engineer-8362737002
+- Databricks implementation reference: source reviewed during project planning.
   - Notes: Emphasizes enterprise clients, deployment/integration, data and AI apps, analytics, agents, governance, and customer delivery.

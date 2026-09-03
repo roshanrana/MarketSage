@@ -14,7 +14,7 @@ External systems:
 ## Goals And Non-Goals
 
 - Goal: Build a complete MCP server and client demo that exposes a traditional finance research app to LLMs. Covers FR-001 through FR-015.
-- Goal: Demonstrate FDE-relevant production judgment: integration boundaries, observability, validation, data provenance, and user-facing demo quality. Covers NFR-001 through NFR-010.
+- Goal: Demonstrate implementation-relevant production judgment: integration boundaries, observability, validation, data provenance, and user-facing demo quality. Covers NFR-001 through NFR-010.
 - Goal: Make the default demo reproducible without paid credentials by using seeded/offline data. Covers FR-004 and NFR-001.
 - Goal: Use Go where it improves the product story without forcing the data/AI layer out of Python. Covers the user's stack preference.
 - Non-goal: Trade execution or regulated investment advice.
@@ -25,9 +25,9 @@ External systems:
 
 | Option | Fit | Tradeoffs |
 | --- | --- | --- |
-| Use OpenBB's existing MCP server directly and add clients | Fastest path to a working MCP demo | Too thin for an FDE portfolio; limited original backend, data, and workflow design |
+| Use OpenBB's existing MCP server directly and add clients | Fastest path to a working MCP demo | Too thin for an implementation portfolio; limited original backend, data, and workflow design |
 | Python-only MCP server using OpenBB and HF directly | Strong ecosystem fit and lower complexity | Less Go signal; one process carries MCP, OpenBB, ML, cache, and API concerns |
-| Go MCP gateway plus Python analytics core | Strong FDE signal: boundary service, typed contracts, operational discipline, Python where it belongs | More moving parts; needs M0 spike to prove Go MCP SDK and Python service integration |
+| Go MCP gateway plus Python analytics core | Strong delivery signal: boundary service, typed contracts, operational discipline, Python where it belongs | More moving parts; needs M0 spike to prove Go MCP SDK and Python service integration |
 | TypeScript MCP server plus Next.js app | Smooth UI/client sharing and strong web story | OpenBB/HF integration still needs Python or subprocess boundary; weaker Go signal |
 
 ## Recommended Architecture
@@ -36,7 +36,7 @@ Use a Go MCP gateway in front of a Python analytics core, with TypeScript client
 
 The Go gateway owns MCP protocol exposure, input validation, request IDs, audit-event envelopes, transport selection, and safe logging behavior. The Python analytics core owns OpenBB integration, Hugging Face dataset/model loading, market normalization, sentiment scoring, evidence retrieval, and DuckDB persistence. TypeScript provides a CLI MCP client and a Next.js analyst workbench.
 
-This is the best portfolio shape because it shows an FDE can compose existing platforms instead of rebuilding them, choose language boundaries intentionally, and ship an agent-facing interface with traditional product UX.
+This is the best portfolio shape because it shows an implementation engineer can compose existing platforms instead of rebuilding them, choose language boundaries intentionally, and ship an agent-facing interface with traditional product UX.
 
 ## Component Model
 
@@ -144,7 +144,7 @@ Failure handling:
 
 ## Tech Stack Recommendation
 
-| Layer | Viable Options | Recommendation | Why | FDE Signal |
+| Layer | Viable Options | Recommendation | Why | Delivery Signal |
 | --- | --- | --- | --- | --- |
 | MCP server | Go, Python, TypeScript | Go gateway, with M0 spike | Go is Tier 1 in official MCP SDK docs and is strong for boundary services and CLIs | Shows production backend judgment and Go capability |
 | Analytics/data integration | Python, Go subprocesses, TypeScript | Python 3.12 with uv, FastAPI, OpenBB, pandas/polars, DuckDB | OpenBB and Hugging Face fit Python best | Shows data/AI implementation depth |

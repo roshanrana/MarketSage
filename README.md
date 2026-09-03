@@ -1,6 +1,6 @@
 # MarketSage
 
-MarketSage is an MCP-native market intelligence workbench that connects a traditional finance analytics application to LLM clients. It is built as a Forward Deployed Engineer portfolio product: practical fintech workflow, real service boundaries, seeded offline demos, optional live OpenBB integration, Hugging Face finance assets, auditability, and a polished analyst UI.
+MarketSage is an MCP-native market intelligence workbench that connects a traditional finance analytics application to LLM clients. It is built as a customer-facing implementation portfolio product: practical fintech workflow, real service boundaries, seeded offline demos, optional live OpenBB integration, Hugging Face finance assets, auditability, and a polished analyst UI.
 
 MarketSage does not execute trades, move money, or provide investment advice.
 
@@ -122,7 +122,7 @@ Latest local evidence is recorded in:
 - `docs/third-party-notices.md`
 - `docs/ship-report.md`
 
-## FDE Signals
+## Delivery Signals
 
 - Discovery-to-delivery lifecycle artifacts in `docs/design` and `docs/tasks`.
 - Go service boundary for MCP and transport discipline.
