@@ -1,0 +1,127 @@
+{
+  "request_id": "req-fixture",
+  "mode": "seeded",
+  "generated_at": "2026-01-01T00:00:00Z",
+  "source": "marketsage.analytics.runs",
+  "data": {
+    "run_id": "run-fixture",
+    "created_at": "2026-01-01T00:00:00Z",
+    "input": {
+      "horizon": "1w",
+      "provider_mode": "seeded",
+      "sections": [
+        "market",
+        "sentiment",
+        "evidence",
+        "caveats"
+      ],
+      "tickers": [
+        "MSFT"
+      ]
+    },
+    "output": {
+      "run_id": "run-fixture",
+      "title": "MarketSage brief: MSFT",
+      "tickers": [
+        "MSFT"
+      ],
+      "horizon": "1w",
+      "generated_at": "2026-01-01T00:00:00Z",
+      "sections": [
+        {
+          "title": "Market Snapshot",
+          "bullets": [
+            "MSFT: 509.31 USD, +0.76% as of 2026-08-28T20:00:00+00:00"
+          ],
+          "references": [
+            "snapshot:MSFT"
+          ]
+        },
+        {
+          "title": "Sentiment",
+          "bullets": [
+            "Neutral sentiment (55% confidence, marketsage-lexicon-v0)."
+          ],
+          "references": [
+            "sentiment:29e7347946b40c0470ce7f8b662c32e117750d97cd312da0d821f5692a3914a2"
+          ]
+        },
+        {
+          "title": "Evidence",
+          "bullets": [
+            "MSFT | Microsoft filing excerpt (FinanceBench corpus 000000108): Table of Contents PART II Item 8 ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA INCOME STATEMENTS (In millions, except per share amounts) Year Ended June 30, 2016 2015 2014 Re",
+            "MSFT | Microsoft filing excerpt (FinanceBench corpus 000000109): BALANCE SHEETS (In millions) June 30, 2023 2022 Assets Current assets: Cash and cash equivalents $ 34,704 $ 13,931 Short-term investments 76,558 90,826 Total cash, cash equivalents"
+          ],
+          "references": [
+            "evidence:financebench-000000108",
+            "evidence:financebench-000000109"
+          ]
+        },
+        {
+          "title": "Caveats",
+          "bullets": [
+            "Seeded data is illustrative and not current market data.",
+            "This output is research support, not investment advice.",
+            "Live OpenBB mode and model downloads are optional runtime paths."
+          ],
+          "references": [
+            "policy:seeded-data",
+            "policy:not-advice",
+            "policy:optional-live"
+          ]
+        }
+      ],
+      "market_snapshots": [
+        {
+          "ticker": "MSFT",
+          "name": "Microsoft Corporation",
+          "as_of": "2026-08-28T20:00:00Z",
+          "price": 509.31,
+          "currency": "USD",
+          "change": 3.84,
+          "change_percent": 0.76,
+          "volume": 22451000,
+          "sector": "Technology",
+          "source_name": "MarketSage illustrative seed data",
+          "source_url": "https://github.com/roshanrana/marketsage"
+        }
+      ],
+      "sentiment": {
+        "label": "neutral",
+        "confidence": 0.55,
+        "model_id": "marketsage-lexicon-v0",
+        "fallback": true,
+        "text_hash": "29e7347946b40c0470ce7f8b662c32e117750d97cd312da0d821f5692a3914a2",
+        "matched_terms": []
+      },
+      "evidence": [
+        {
+          "id": "financebench-000000108",
+          "document_id": "000000108",
+          "dataset_id": "mteb/FinanceBenchRetrieval",
+          "ticker": "MSFT",
+          "title": "Microsoft filing excerpt (FinanceBench corpus 000000108)",
+          "text": "Table of Contents PART II Item 8 ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA INCOME STATEMENTS (In millions, except per share amounts) Year Ended June 30, 2016 2015 2014 Revenue: Product $ 61,502 $ 75,956 $ 72,948 Service and other 23,818 17,624 13,885 Total revenue 85,320 93,580 86,833 Cost of revenue: Product 17,880 21,410 16,681 Service and other 14,900 11,628 10,397 Total cost of revenue 32,780 33,038 27,078 Gross margin 52,540 60,542 59,755 Research and development 11,988 12,046 11,381 Sales and marketing 14,697 15,713 15,811 General and administrative 4,563 4,611 4,677 Impairment, integration, and restructuring 1,110 10,011 127 Operating income 20,182 18,161 27,759 Other incom\u2026",
+          "score": 7.2891,
+          "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+          "license": "MIT"
+        },
+        {
+          "id": "financebench-000000109",
+          "document_id": "000000109",
+          "dataset_id": "mteb/FinanceBenchRetrieval",
+          "ticker": "MSFT",
+          "title": "Microsoft filing excerpt (FinanceBench corpus 000000109)",
+          "text": "BALANCE SHEETS (In millions) June 30, 2023 2022 Assets Current assets: Cash and cash equivalents $ 34,704 $ 13,931 Short-term investments 76,558 90,826 Total cash, cash equivalents, and short-term investments 111,262 104,757 Accounts receivable, net of allowance for doubtful accounts of $650 and $633 48,688 44,261 Inventories 2,500 3,742 Other current assets 21,807 16,924 Total current assets 184,257 169,684 Property and equipment, net of accumulated depreciation of $68,251 and $59,660 95,641 74,398 Operating lease right-of-use assets 14,346 13,148 Equity investments 9,879 6,891 Goodwill 67,886 67,524 Intangible assets, net 9,366 11,298 Other long-term assets 30,601 21,897 Total assets $ 41\u2026",
+          "score": 3.6147,
+          "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+          "license": "MIT"
+        }
+      ]
+    }
+  },
+  "warnings": [],
+  "caveats": [
+    "Research demo only. MarketSage does not provide investment advice or execute trades."
+  ]
+}

@@ -53,7 +53,15 @@ npm run dev:analytics
 
 Say: "Protected mode requires bearer auth. The web proxy and Go gateway forward the token server-side; secrets are not exposed in the health payload."
 
-## 5. Show Auditability
+## 5. Show The Numbers
+
+```powershell
+npm run eval
+```
+
+Say: "Every figure on the README card comes from this command: BM25 recall on the committed FinanceBench corpus, the sentiment fallback scored on FiQA, brief grounding, contract conformance, nine fault injections, audit completeness. The lexicon fallback is weak and the card says so; FinBERT is pending because the offline gate forbids downloads."
+
+## 6. Show Auditability
 
 ```powershell
 uv run --project services/analytics-python python -c "import duckdb; conn = duckdb.connect('data/local/marketsage.duckdb'); print(conn.execute('select request_id, tool_name, status, duration_ms, mode, warning_count from audit_event order by created_at desc limit 5').fetchall())"

@@ -2,56 +2,1034 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://marketsage.local/schemas/marketsage.schema.json",
   "title": "MarketSage Contracts",
+  "description": "Generated from marketsage_core.models by marketsage_core.contracts. Do not edit by hand; run `npm run contracts`.",
   "type": "object",
+  "endpoints": {
+    "HealthEnvelope": "/health",
+    "DatasetStatusEnvelope": "/datasets",
+    "MarketSnapshotEnvelope": "/market/snapshot",
+    "PriceHistoryEnvelope": "/market/history",
+    "SentimentEnvelope": "/sentiment/text",
+    "EvidenceSearchEnvelope": "/evidence/search",
+    "ResearchBriefEnvelope": "/briefs/research",
+    "SavedResearchRunEnvelope": "/runs/{run_id}"
+  },
   "$defs": {
-    "DependencyStatus": {
-      "type": "object",
-      "required": ["name", "status"],
+    "BriefSection": {
+      "description": "One brief section. ``references[i]`` names the artefact behind ``bullets[i]``.\n\nA reference is ``snapshot:<ticker>``, ``evidence:<id>``, ``sentiment:<hash>`` or\n``policy:<name>``. An empty string means the bullet states an absence and carries\nno claim.",
       "properties": {
-        "name": { "type": "string" },
-        "status": { "type": "string", "enum": ["ok", "degraded", "unavailable"] },
-        "detail": { "type": "string" }
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "bullets": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Bullets",
+          "type": "array"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "title": "References",
+          "type": "array"
+        }
       },
+      "required": [
+        "title",
+        "bullets"
+      ],
+      "title": "BriefSection",
+      "type": "object",
       "additionalProperties": false
     },
     "ConfigSummary": {
-      "type": "object",
-      "required": ["mode", "data_dir", "model_downloads_enabled", "http_auth_required"],
       "properties": {
-        "mode": { "type": "string", "enum": ["seeded", "live", "hybrid"] },
-        "data_dir": { "type": "string" },
-        "model_downloads_enabled": { "type": "boolean" },
-        "http_auth_required": { "type": "boolean" }
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "data_dir": {
+          "title": "Data Dir",
+          "type": "string"
+        },
+        "model_downloads_enabled": {
+          "title": "Model Downloads Enabled",
+          "type": "boolean"
+        },
+        "http_auth_required": {
+          "title": "Http Auth Required",
+          "type": "boolean"
+        }
       },
+      "required": [
+        "mode",
+        "data_dir",
+        "model_downloads_enabled",
+        "http_auth_required"
+      ],
+      "title": "ConfigSummary",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DatasetEntry": {
+      "properties": {
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "config": {
+          "title": "Config",
+          "type": "string"
+        },
+        "split": {
+          "title": "Split",
+          "type": "string"
+        },
+        "rows_count": {
+          "title": "Rows Count",
+          "type": "integer"
+        },
+        "license": {
+          "title": "License",
+          "type": "string"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "role": {
+          "title": "Role",
+          "type": "string"
+        },
+        "local_status": {
+          "title": "Local Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "config",
+        "split",
+        "rows_count",
+        "license",
+        "source_url",
+        "role",
+        "local_status"
+      ],
+      "title": "DatasetEntry",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DatasetStatusData": {
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "datasets": {
+          "items": {
+            "$ref": "#/$defs/DatasetEntry"
+          },
+          "title": "Datasets",
+          "type": "array"
+        }
+      },
+      "required": [
+        "count",
+        "datasets"
+      ],
+      "title": "DatasetStatusData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DatasetStatusEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/DatasetStatusData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DependencyStatus": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "degraded",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "status"
+      ],
+      "title": "DependencyStatus",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "EvidenceSearchData": {
+      "properties": {
+        "query": {
+          "title": "Query",
+          "type": "string"
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "retrieval_mode": {
+          "enum": [
+            "lexical",
+            "embedding"
+          ],
+          "title": "Retrieval Mode",
+          "type": "string"
+        },
+        "scorer": {
+          "default": "bm25",
+          "enum": [
+            "bm25",
+            "overlap"
+          ],
+          "title": "Scorer",
+          "type": "string"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSnippet"
+          },
+          "title": "Results",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "count",
+        "retrieval_mode",
+        "results"
+      ],
+      "title": "EvidenceSearchData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "EvidenceSearchEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/EvidenceSearchData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "EvidenceSnippet": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "dataset_id": {
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "ticker": {
+          "title": "Ticker",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "license": {
+          "title": "License",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "document_id",
+        "dataset_id",
+        "ticker",
+        "title",
+        "text",
+        "score",
+        "source_url",
+        "license"
+      ],
+      "title": "EvidenceSnippet",
+      "type": "object",
       "additionalProperties": false
     },
     "HealthData": {
-      "type": "object",
-      "required": ["service", "status", "version", "config", "dependencies"],
       "properties": {
-        "service": { "type": "string" },
-        "status": { "type": "string", "enum": ["ok", "degraded", "unavailable"] },
-        "version": { "type": "string" },
-        "config": { "$ref": "#/$defs/ConfigSummary" },
+        "service": {
+          "title": "Service",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "degraded",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        },
+        "config": {
+          "$ref": "#/$defs/ConfigSummary"
+        },
         "dependencies": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/DependencyStatus" }
+          "items": {
+            "$ref": "#/$defs/DependencyStatus"
+          },
+          "title": "Dependencies",
+          "type": "array"
         }
       },
+      "required": [
+        "service",
+        "status",
+        "version",
+        "config",
+        "dependencies"
+      ],
+      "title": "HealthData",
+      "type": "object",
       "additionalProperties": false
     },
     "HealthEnvelope": {
-      "type": "object",
-      "required": ["request_id", "mode", "generated_at", "source", "data", "warnings", "caveats"],
       "properties": {
-        "request_id": { "type": "string" },
-        "mode": { "type": "string", "enum": ["seeded", "live", "hybrid"] },
-        "generated_at": { "type": "string", "format": "date-time" },
-        "source": { "type": "string" },
-        "data": { "$ref": "#/$defs/HealthData" },
-        "warnings": { "type": "array", "items": { "type": "string" } },
-        "caveats": { "type": "array", "items": { "type": "string" } }
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/HealthData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
       },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "MarketSnapshotData": {
+      "properties": {
+        "ticker": {
+          "title": "Ticker",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "as_of": {
+          "format": "date-time",
+          "title": "As Of",
+          "type": "string"
+        },
+        "price": {
+          "title": "Price",
+          "type": "number"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "change": {
+          "title": "Change",
+          "type": "number"
+        },
+        "change_percent": {
+          "title": "Change Percent",
+          "type": "number"
+        },
+        "volume": {
+          "title": "Volume",
+          "type": "integer"
+        },
+        "sector": {
+          "title": "Sector",
+          "type": "string"
+        },
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "ticker",
+        "name",
+        "as_of",
+        "price",
+        "currency",
+        "change",
+        "change_percent",
+        "volume",
+        "sector",
+        "source_name"
+      ],
+      "title": "MarketSnapshotData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "MarketSnapshotEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/MarketSnapshotData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "PriceHistoryData": {
+      "properties": {
+        "ticker": {
+          "title": "Ticker",
+          "type": "string"
+        },
+        "interval": {
+          "title": "Interval",
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/PriceObservation"
+          },
+          "title": "Observations",
+          "type": "array"
+        },
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "ticker",
+        "interval",
+        "observations",
+        "source_name"
+      ],
+      "title": "PriceHistoryData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "PriceHistoryEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/PriceHistoryData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "PriceObservation": {
+      "properties": {
+        "date": {
+          "format": "date",
+          "title": "Date",
+          "type": "string"
+        },
+        "close": {
+          "title": "Close",
+          "type": "number"
+        },
+        "volume": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Volume"
+        }
+      },
+      "required": [
+        "date",
+        "close"
+      ],
+      "title": "PriceObservation",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "ResearchBriefData": {
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "tickers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tickers",
+          "type": "array"
+        },
+        "horizon": {
+          "title": "Horizon",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/$defs/BriefSection"
+          },
+          "title": "Sections",
+          "type": "array"
+        },
+        "market_snapshots": {
+          "items": {
+            "$ref": "#/$defs/MarketSnapshotData"
+          },
+          "title": "Market Snapshots",
+          "type": "array"
+        },
+        "sentiment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SentimentData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSnippet"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "run_id",
+        "title",
+        "tickers",
+        "horizon",
+        "generated_at",
+        "sections",
+        "market_snapshots",
+        "sentiment",
+        "evidence"
+      ],
+      "title": "ResearchBriefData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "ResearchBriefEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/ResearchBriefData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "SavedResearchRunData": {
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "input": {
+          "additionalProperties": true,
+          "title": "Input",
+          "type": "object"
+        },
+        "output": {
+          "$ref": "#/$defs/ResearchBriefData"
+        }
+      },
+      "required": [
+        "run_id",
+        "created_at",
+        "input",
+        "output"
+      ],
+      "title": "SavedResearchRunData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "SavedResearchRunEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/SavedResearchRunData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "SentimentData": {
+      "properties": {
+        "label": {
+          "enum": [
+            "positive",
+            "negative",
+            "neutral"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "fallback": {
+          "title": "Fallback",
+          "type": "boolean"
+        },
+        "text_hash": {
+          "title": "Text Hash",
+          "type": "string"
+        },
+        "matched_terms": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Terms",
+          "type": "array"
+        }
+      },
+      "required": [
+        "label",
+        "confidence",
+        "model_id",
+        "fallback",
+        "text_hash"
+      ],
+      "title": "SentimentData",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "SentimentEnvelope": {
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "seeded",
+            "live",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/SentimentData"
+        },
+        "warnings": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "caveats": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Caveats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "mode",
+        "generated_at",
+        "source",
+        "data"
+      ],
+      "type": "object",
       "additionalProperties": false
     }
   }

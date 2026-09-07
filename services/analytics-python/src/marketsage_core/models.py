@@ -162,6 +162,7 @@ class EvidenceSearchData(BaseModel):
     query: str
     count: int
     retrieval_mode: Literal["lexical", "embedding"]
+    scorer: Literal["bm25", "overlap"] = "bm25"
     results: list[EvidenceSnippet]
 
 
@@ -180,8 +181,16 @@ class ResearchBriefRequest(BaseModel):
 
 
 class BriefSection(BaseModel):
+    """One brief section. ``references[i]`` names the artefact behind ``bullets[i]``.
+
+    A reference is ``snapshot:<ticker>``, ``evidence:<id>``, ``sentiment:<hash>`` or
+    ``policy:<name>``. An empty string means the bullet states an absence and carries
+    no claim.
+    """
+
     title: str
     bullets: list[str]
+    references: list[str] = Field(default_factory=list)
 
 
 class ResearchBriefData(BaseModel):

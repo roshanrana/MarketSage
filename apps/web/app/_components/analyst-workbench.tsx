@@ -125,7 +125,7 @@ function numberFormat(value: number) {
 }
 
 export function AnalystWorkbench() {
-  const [ticker, setTicker] = useState("AAPL");
+  const [ticker, setTicker] = useState("MSFT");
   const [mode, setMode] = useState<(typeof modeOptions)[number]>("seeded");
   const [query, setQuery] = useState("Apple services revenue margin");
   const [health, setHealth] = useState<Envelope<HealthData> | null>(null);

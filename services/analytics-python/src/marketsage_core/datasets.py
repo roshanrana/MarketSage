@@ -65,6 +65,7 @@ DATASETS = [
         license="MIT",
         source_url="https://huggingface.co/datasets/TheFinAI/fiqa-sentiment-classification",
         role="Sentiment evaluation fixture.",
+        local_status="committed-fixture",
     ),
     DatasetDefinition(
         dataset_id="TheFinAI/fiqa-sentiment-classification",
@@ -83,6 +84,7 @@ DATASETS = [
         license="MIT",
         source_url="https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
         role="Evidence retrieval corpus fixture.",
+        local_status="committed-fixture",
     ),
     DatasetDefinition(
         dataset_id="mteb/FinanceBenchRetrieval",
@@ -92,6 +94,7 @@ DATASETS = [
         license="MIT",
         source_url="https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
         role="Evidence retrieval relevance fixture.",
+        local_status="committed-fixture",
     ),
     DatasetDefinition(
         dataset_id="mteb/FinanceBenchRetrieval",
@@ -101,6 +104,7 @@ DATASETS = [
         license="MIT",
         source_url="https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
         role="Evidence retrieval query fixture.",
+        local_status="committed-fixture",
     ),
     DatasetDefinition(
         dataset_id="glopardo/sp500-earnings-transcripts",

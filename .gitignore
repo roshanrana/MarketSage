@@ -17,6 +17,7 @@ bin/
 *.test
 
 # Local data and secrets
+metrics/eval-latest.json
 .env
 .env.*
 !.env.example

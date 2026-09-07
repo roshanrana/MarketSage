@@ -4,6 +4,16 @@ const checks = [
   ["docs", "node", ["scripts/check-docs.mjs"]],
   ["python lint", "uv", ["run", "--project", "services/analytics-python", "ruff", "check", "."]],
   ["python test", "uv", ["run", "--project", "services/analytics-python", "pytest"]],
+  [
+    "eval drift",
+    "uv",
+    ["run", "--project", "services/analytics-python", "python", "-m", "marketsage_eval", "--check"]
+  ],
+  [
+    "results card drift",
+    "uv",
+    ["run", "--project", "services/analytics-python", "python", "metrics/render.py", "--check"]
+  ],
   ["go fmt", "node", ["scripts/check-go-format.mjs"]],
   ["go test", "go", ["test", "./..."], { cwd: "services/mcp-gateway-go" }],
   ["go vet", "go", ["vet", "./..."], { cwd: "services/mcp-gateway-go" }],

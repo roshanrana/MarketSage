@@ -13,21 +13,23 @@ def client(tmp_path, monkeypatch) -> TestClient:
 def test_evidence_search_returns_ranked_seeded_snippets(tmp_path, monkeypatch):
     response = client(tmp_path, monkeypatch).post(
         "/evidence/search",
-        json={"query": "Apple services revenue margin", "ticker": "AAPL", "top_k": 3},
+        json={"query": "Microsoft cloud revenue growth", "ticker": "MSFT", "top_k": 3},
     )
 
     assert response.status_code == 200
     body = response.json()
     assert body["data"]["retrieval_mode"] == "lexical"
+    assert body["data"]["scorer"] == "bm25"
     assert body["data"]["count"] >= 1
-    assert body["data"]["results"][0]["ticker"] == "AAPL"
+    assert body["data"]["results"][0]["ticker"] == "MSFT"
+    assert body["data"]["results"][0]["dataset_id"] == "mteb/FinanceBenchRetrieval"
     assert body["data"]["results"][0]["score"] > 0
 
 
 def test_unknown_dataset_filter_returns_empty_evidence(tmp_path, monkeypatch):
     response = client(tmp_path, monkeypatch).post(
         "/evidence/search",
-        json={"query": "Apple services revenue margin", "dataset": "missing/dataset"},
+        json={"query": "Microsoft cloud revenue growth", "dataset": "missing/dataset"},
     )
 
     assert response.status_code == 200
@@ -40,18 +42,22 @@ def test_research_brief_persists_and_returns_saved_run(tmp_path, monkeypatch):
     api = client(tmp_path, monkeypatch)
     brief_response = api.post(
         "/briefs/research",
-        json={"tickers": ["AAPL"], "horizon": "1w", "provider_mode": "seeded"},
+        json={"tickers": ["MSFT"], "horizon": "1w", "provider_mode": "seeded"},
     )
 
     assert brief_response.status_code == 200
     brief = brief_response.json()["data"]
     assert brief["run_id"]
-    assert brief["market_snapshots"][0]["ticker"] == "AAPL"
+    assert brief["market_snapshots"][0]["ticker"] == "MSFT"
     assert brief["evidence"]
+    for section in brief["sections"]:
+        assert len(section["references"]) == len(section["bullets"])
+    evidence_section = next(s for s in brief["sections"] if s["title"] == "Evidence")
+    assert evidence_section["references"][0] == f"evidence:{brief['evidence'][0]['id']}"
 
     run_response = api.get(f"/runs/{brief['run_id']}")
 
     assert run_response.status_code == 200
     saved = run_response.json()["data"]
     assert saved["run_id"] == brief["run_id"]
-    assert saved["output"]["title"] == "MarketSage brief: AAPL"
+    assert saved["output"]["title"] == "MarketSage brief: MSFT"

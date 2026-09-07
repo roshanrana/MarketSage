@@ -1,0 +1,38 @@
+{
+  "request_id": "req-fixture",
+  "mode": "seeded",
+  "generated_at": "2026-01-01T00:00:00Z",
+  "source": "marketsage.analytics.health",
+  "data": {
+    "service": "marketsage-analytics",
+    "status": "ok",
+    "version": "0.1.0",
+    "config": {
+      "mode": "seeded",
+      "data_dir": "<data_dir>",
+      "model_downloads_enabled": false,
+      "http_auth_required": false
+    },
+    "dependencies": [
+      {
+        "name": "duckdb",
+        "status": "ok",
+        "detail": "Database ready at <data_dir>\\marketsage.duckdb"
+      },
+      {
+        "name": "openbb",
+        "status": "ok",
+        "detail": "Seeded market adapter ready; live OpenBB requires optional dependencies/config."
+      },
+      {
+        "name": "huggingface",
+        "status": "ok",
+        "detail": "Curated dataset manifest ready; bounded downloads are planned after M1."
+      }
+    ]
+  },
+  "warnings": [],
+  "caveats": [
+    "Research demo only. MarketSage does not provide investment advice or execute trades."
+  ]
+}

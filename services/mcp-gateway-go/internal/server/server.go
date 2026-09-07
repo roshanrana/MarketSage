@@ -175,7 +175,7 @@ func New(analytics AnalyticsClient, version string) *mcp.Server {
 		mcpServer,
 		&mcp.Tool{
 			Name:        "evidence_search",
-			Description: "Search seeded financial evidence and return citation-ready snippets.",
+			Description: "Search the committed FinanceBench filing corpus and return citation-ready snippets.",
 		},
 		handlers.EvidenceSearch,
 	)
@@ -197,7 +197,42 @@ func New(analytics AnalyticsClient, version string) *mcp.Server {
 		},
 		handlers.ResearchRunResource,
 	)
+	registerPrompts(mcpServer)
 	return mcpServer
+}
+
+// ToolNames lists the tools New registers, in registration order.
+func ToolNames() []string {
+	return []string{
+		"health_check",
+		"dataset_status",
+		"market_snapshot",
+		"price_history",
+		"sentiment_score_text",
+		"evidence_search",
+		"research_brief",
+	}
+}
+
+// ResourceTemplateNames lists the resource templates New registers.
+func ResourceTemplateNames() []string {
+	return []string{"research_run"}
+}
+
+// Surface is the MCP surface the gateway advertises. `marketsage-mcp --describe`
+// prints it so an offline harness can record the surface without a host.
+type Surface struct {
+	Tools             []string `json:"tools"`
+	Prompts           []string `json:"prompts"`
+	ResourceTemplates []string `json:"resource_templates"`
+}
+
+func Describe() Surface {
+	return Surface{
+		Tools:             ToolNames(),
+		Prompts:           PromptNames(),
+		ResourceTemplates: ResourceTemplateNames(),
+	}
 }
 
 func (h *Handlers) HealthCheck(

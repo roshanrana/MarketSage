@@ -1,0 +1,13 @@
+{
+  "title": "MarketSage offline eval",
+  "subtitle": "Committed FinanceBench and FiQA fixtures replayed through the analytics core with the deterministic providers bound; no network, no key, no model download.",
+  "make_target": "npm run eval",
+  "kpi_order": [
+    "retrieval_recall_at_5",
+    "sentiment_coverage",
+    "brief_grounding",
+    "contract_conformance",
+    "failure_modes",
+    "audit_completeness"
+  ]
+}

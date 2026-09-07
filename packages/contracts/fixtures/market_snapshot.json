@@ -1,0 +1,23 @@
+{
+  "request_id": "req-fixture",
+  "mode": "seeded",
+  "generated_at": "2026-01-01T00:00:00Z",
+  "source": "marketsage.analytics.market.snapshot",
+  "data": {
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "as_of": "2026-08-28T20:00:00Z",
+    "price": 509.31,
+    "currency": "USD",
+    "change": 3.84,
+    "change_percent": 0.76,
+    "volume": 22451000,
+    "sector": "Technology",
+    "source_name": "MarketSage illustrative seed data",
+    "source_url": "https://github.com/roshanrana/marketsage"
+  },
+  "warnings": [],
+  "caveats": [
+    "Research demo only. MarketSage does not provide investment advice or execute trades."
+  ]
+}

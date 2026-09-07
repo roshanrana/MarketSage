@@ -1,7 +1,7 @@
 # Ship Report
 
-Date: 2026-09-01
-Status: GitHub-ready MVP.
+Date: 2026-09-07
+Status: GitHub-ready MVP with an offline evaluation harness.
 
 ## Built Scope
 
@@ -12,6 +12,8 @@ Status: GitHub-ready MVP.
 - DuckDB local store for dataset manifest, research runs, and audit events.
 - Optional HTTP bearer auth using `MARKETSAGE_HTTP_TOKEN`.
 - Documentation for architecture, lifecycle decisions, security posture, source notes, demo flow, and third-party notices.
+- Offline evaluation harness (`npm run eval`): BM25 retrieval scored on the committed FinanceBench corpus, the lexicon fallback scored on the FiQA test split, brief grounding, JSON Schema contract conformance with a Go strict-decode check, nine named fault injections, audit completeness and an in-process latency budget. Results render to a card in the README and CI fails on drift.
+- Four MCP prompts (FR-011) and `marketsage-mcp --describe`.
 
 ## Validation Evidence
 
@@ -51,10 +53,11 @@ Security/dependency sweep:
 
 ## Known Limitations
 
-- Seeded market data is illustrative and not current market data.
+- Seeded market data is illustrative and not current market data. Only two of the five seeded tickers (MSFT, JPM) have filing evidence in the corpus; the others get an explicit coverage warning.
 - Live mode depends on optional OpenBB installation and provider configuration.
 - FinBERT model use is opt-in; deterministic sentiment fallback is the default.
-- Evidence retrieval is lexical in the MVP; embedding retrieval is planned.
+- Evidence retrieval is lexical BM25 over 145 FinanceBench filing excerpts covering 32 companies; embedding retrieval is not implemented. Recall@5 without a ticker hint is well under half, and the card says so.
+- The deterministic sentiment fallback commits on fewer than one in ten FiQA sentences. It exists so the demo runs offline, not as a classifier; FinBERT is the real path and its accuracy is unmeasured here.
 - Bearer auth is a local demo/prototype control, not production identity management.
 
 ## Reviewer Story

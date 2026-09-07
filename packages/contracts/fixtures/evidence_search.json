@@ -1,0 +1,42 @@
+{
+  "request_id": "req-fixture",
+  "mode": "seeded",
+  "generated_at": "2026-01-01T00:00:00Z",
+  "source": "marketsage.analytics.evidence.search",
+  "data": {
+    "query": "Microsoft cloud revenue growth and operating margin",
+    "count": 2,
+    "retrieval_mode": "lexical",
+    "scorer": "bm25",
+    "results": [
+      {
+        "id": "financebench-000000108",
+        "document_id": "000000108",
+        "dataset_id": "mteb/FinanceBenchRetrieval",
+        "ticker": "MSFT",
+        "title": "Microsoft filing excerpt (FinanceBench corpus 000000108)",
+        "text": "Table of Contents PART II Item 8 ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA INCOME STATEMENTS (In millions, except per share amounts) Year Ended June 30, 2016 2015 2014 Revenue: Product $ 61,502 $ 75,956 $ 72,948 Service and other 23,818 17,624 13,885 Total revenue 85,320 93,580 86,833 Cost of revenue: Product 17,880 21,410 16,681 Service and other 14,900 11,628 10,397 Total cost of revenue 32,780 33,038 27,078 Gross margin 52,540 60,542 59,755 Research and development 11,988 12,046 11,381 Sales and marketing 14,697 15,713 15,811 General and administrative 4,563 4,611 4,677 Impairment, integration, and restructuring 1,110 10,011 127 Operating income 20,182 18,161 27,759 Other incom\u2026",
+        "score": 7.3036,
+        "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+        "license": "MIT"
+      },
+      {
+        "id": "financebench-000000109",
+        "document_id": "000000109",
+        "dataset_id": "mteb/FinanceBenchRetrieval",
+        "ticker": "MSFT",
+        "title": "Microsoft filing excerpt (FinanceBench corpus 000000109)",
+        "text": "BALANCE SHEETS (In millions) June 30, 2023 2022 Assets Current assets: Cash and cash equivalents $ 34,704 $ 13,931 Short-term investments 76,558 90,826 Total cash, cash equivalents, and short-term investments 111,262 104,757 Accounts receivable, net of allowance for doubtful accounts of $650 and $633 48,688 44,261 Inventories 2,500 3,742 Other current assets 21,807 16,924 Total current assets 184,257 169,684 Property and equipment, net of accumulated depreciation of $68,251 and $59,660 95,641 74,398 Operating lease right-of-use assets 14,346 13,148 Equity investments 9,879 6,891 Goodwill 67,886 67,524 Intangible assets, net 9,366 11,298 Other long-term assets 30,601 21,897 Total assets $ 41\u2026",
+        "score": 3.9082,
+        "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+        "license": "MIT"
+      }
+    ]
+  },
+  "warnings": [
+    "Lexical bm25 retrieval over the committed FinanceBench corpus; embedding retrieval is an optional enhancement."
+  ],
+  "caveats": [
+    "Research demo only. MarketSage does not provide investment advice or execute trades."
+  ]
+}

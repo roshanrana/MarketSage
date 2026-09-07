@@ -1,0 +1,107 @@
+{
+  "request_id": "req-fixture",
+  "mode": "seeded",
+  "generated_at": "2026-01-01T00:00:00Z",
+  "source": "marketsage.analytics.datasets",
+  "data": {
+    "count": 9,
+    "datasets": [
+      {
+        "dataset_id": "zeroshot/twitter-financial-news-sentiment",
+        "config": "default",
+        "split": "train",
+        "rows_count": 9543,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment",
+        "role": "Seed sentiment examples.",
+        "local_status": "metadata-ready"
+      },
+      {
+        "dataset_id": "zeroshot/twitter-financial-news-sentiment",
+        "config": "default",
+        "split": "validation",
+        "rows_count": 2388,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment",
+        "role": "Seed sentiment validation examples.",
+        "local_status": "metadata-ready"
+      },
+      {
+        "dataset_id": "TheFinAI/fiqa-sentiment-classification",
+        "config": "default",
+        "split": "train",
+        "rows_count": 822,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/TheFinAI/fiqa-sentiment-classification",
+        "role": "Sentiment evaluation fixture.",
+        "local_status": "metadata-ready"
+      },
+      {
+        "dataset_id": "TheFinAI/fiqa-sentiment-classification",
+        "config": "default",
+        "split": "test",
+        "rows_count": 234,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/TheFinAI/fiqa-sentiment-classification",
+        "role": "Sentiment evaluation fixture.",
+        "local_status": "committed-fixture"
+      },
+      {
+        "dataset_id": "TheFinAI/fiqa-sentiment-classification",
+        "config": "default",
+        "split": "valid",
+        "rows_count": 117,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/TheFinAI/fiqa-sentiment-classification",
+        "role": "Sentiment evaluation fixture.",
+        "local_status": "metadata-ready"
+      },
+      {
+        "dataset_id": "mteb/FinanceBenchRetrieval",
+        "config": "corpus",
+        "split": "test",
+        "rows_count": 145,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+        "role": "Evidence retrieval corpus fixture.",
+        "local_status": "committed-fixture"
+      },
+      {
+        "dataset_id": "mteb/FinanceBenchRetrieval",
+        "config": "qrels",
+        "split": "test",
+        "rows_count": 150,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+        "role": "Evidence retrieval relevance fixture.",
+        "local_status": "committed-fixture"
+      },
+      {
+        "dataset_id": "mteb/FinanceBenchRetrieval",
+        "config": "queries",
+        "split": "test",
+        "rows_count": 150,
+        "license": "MIT",
+        "source_url": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval",
+        "role": "Evidence retrieval query fixture.",
+        "local_status": "committed-fixture"
+      },
+      {
+        "dataset_id": "glopardo/sp500-earnings-transcripts",
+        "config": "default",
+        "split": "train",
+        "rows_count": 20681,
+        "license": "license-check-required",
+        "source_url": "https://huggingface.co/datasets/glopardo/sp500-earnings-transcripts",
+        "role": "Optional transcript corpus after license check.",
+        "local_status": "blocked-license-review"
+      }
+    ]
+  },
+  "warnings": [
+    "Large transcript corpus is blocked until license review; use MIT fixtures for MVP."
+  ],
+  "caveats": [
+    "Research demo only. MarketSage does not provide investment advice or execute trades."
+  ]
+}

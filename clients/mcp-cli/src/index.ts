@@ -157,9 +157,9 @@ async function main(): Promise<void> {
 
     const snapshot = await client.callTool({
       name: "market_snapshot",
-      arguments: { ticker: "AAPL", provider_mode: "seeded" }
+      arguments: { ticker: "MSFT", provider_mode: "seeded" }
     });
-    console.log("\nmarket_snapshot AAPL");
+    console.log("\nmarket_snapshot MSFT");
     console.log(renderToolResult(snapshot));
 
     const sentiment = await client.callTool({
@@ -175,14 +175,14 @@ async function main(): Promise<void> {
 
     const evidence = await client.callTool({
       name: "evidence_search",
-      arguments: { query: "Apple services revenue margin", ticker: "AAPL", top_k: 3 }
+      arguments: { query: "Microsoft cloud revenue growth and operating margin", ticker: "MSFT", top_k: 3 }
     });
     console.log("\nevidence_search");
     console.log(renderToolResult(evidence));
 
     const brief = await client.callTool({
       name: "research_brief",
-      arguments: { tickers: ["AAPL"], horizon: "1w", provider_mode: "seeded" }
+      arguments: { tickers: ["MSFT"], horizon: "1w", provider_mode: "seeded" }
     });
     console.log("\nresearch_brief");
     console.log(renderToolResult(brief));

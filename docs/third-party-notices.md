@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-Last updated: 2026-09-01
+Last updated: 2026-09-07
 
 This file records the source posture for the portfolio MVP. It is not legal advice.
 
@@ -20,8 +20,8 @@ This file records the source posture for the portfolio MVP. It is not legal advi
 | Asset | Use | Rows tracked | License | MVP status |
 | --- | --- | ---: | --- | --- |
 | `zeroshot/twitter-financial-news-sentiment` | Sentiment examples | 11,931 | MIT | Metadata-ready |
-| `TheFinAI/fiqa-sentiment-classification` | Sentiment evaluation fixture | 1,173 | MIT | Metadata-ready |
-| `mteb/FinanceBenchRetrieval` | Evidence retrieval fixture | 445 | MIT | Metadata-ready |
+| `TheFinAI/fiqa-sentiment-classification` | Sentiment evaluation fixture | 1,173 | MIT | Test split (234 rows) committed under `data/fixtures/fiqa/`, sha256-pinned |
+| `mteb/FinanceBenchRetrieval` | Evidence retrieval corpus and fixture | 445 | MIT | Corpus, queries and qrels committed under `data/fixtures/financebench/`, sha256-pinned; tickers assigned by a hand-checked company map |
 | `ProsusAI/finbert` | Optional sentiment model | n/a | Model card review required before bundled release | Opt-in download |
 | `BAAI/bge-small-en-v1.5` | Optional embeddings | n/a | MIT | Planned optional enhancement |
 | `sentence-transformers/all-MiniLM-L6-v2` | Optional embedding fallback | n/a | Apache-2.0 | Planned optional enhancement |

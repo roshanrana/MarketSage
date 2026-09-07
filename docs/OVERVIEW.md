@@ -18,7 +18,7 @@ The Model Context Protocol is the right abstraction for this. A tool has a name,
 
 **A Go gateway that respects the transport.** MCP over stdio is unforgiving: anything written to stdout that is not JSON-RPC corrupts the stream. The Go gateway logs to stderr only, forwards bearer tokens server-side, and does nothing but translate between the protocol and the analytics core's HTTP API. It is small on purpose.
 
-**A Python core where the integrations live.** Market data through an OpenBB-ready adapter; Hugging Face datasets with a reviewed manifest; sentiment scoring with a deterministic fallback and an opt-in FinBERT; lexical evidence retrieval; brief orchestration; DuckDB persistence. Every optional dependency is optional in the strict sense: absent, the system runs in seeded mode and says so.
+**A Python core where the integrations live.** Market data through an OpenBB-ready adapter; Hugging Face datasets with a reviewed manifest; sentiment scoring with a deterministic fallback and an opt-in FinBERT; BM25 evidence retrieval over a committed FinanceBench filing corpus; brief orchestration with a reference on every bullet; DuckDB persistence. Every optional dependency is optional in the strict sense: absent, the system runs in seeded mode and says so.
 
 **Three data modes, and warnings that cannot be suppressed.** `seeded` is deterministic and credential-free. `hybrid` tries live data and falls back with a warning in the payload. `live` fails clearly when its dependencies are missing. A consumer of the tool output can always tell what it is looking at.
 
@@ -34,9 +34,10 @@ One gate, `npm run check`, covering four languages and the protocol boundary:
 
 | Check | Result at ship |
 |---|---|
-| Docs, `ruff`, `pytest` (15 tests) | Pass |
-| `go fmt`, `go test`, `go vet` (8 tests) | Pass |
+| Docs, `ruff`, `pytest` (45 tests, including nine named fault injections and the contract checks) | Pass |
+| `go fmt`, `go test`, `go vet` (11 tests, including strict decoding of the exported contract fixtures and the advertised MCP surface) | Pass |
 | MCP CLI smoke: discover 7 tools, call the chain, read `marketsage://runs/{run_id}` | Pass |
+| `npm run eval`: BM25 recall on the committed FinanceBench corpus, the sentiment fallback on the FiQA test split, brief grounding, contract conformance, fault injections, audit completeness | Observed on every push; the results card in the README is regenerated from it and `npm run check` fails on drift |
 | Next.js production build, workspace check | Pass |
 | Desktop and mobile browser: `Run Brief` completes | Pass; a duplicate-key overlay and a mobile overflow were found and fixed |
 | `npm audit --audit-level=high` | 0 vulnerabilities |
@@ -45,7 +46,7 @@ One gate, `npm run check`, covering four languages and the protocol boundary:
 
 ## Honest limits
 
-Seeded data is illustrative, not current. Live mode depends on optional OpenBB installation and provider configuration. FinBERT is opt-in; the default sentiment is a deterministic fallback. Evidence retrieval is lexical; embedding retrieval is a planned step. Bearer auth is a local control, not identity management.
+Seeded data is illustrative, not current. Live mode depends on optional OpenBB installation and provider configuration. FinBERT is opt-in; the default sentiment is a deterministic fallback. Evidence retrieval is lexical BM25 over 145 filing excerpts covering 32 companies, and recall@5 without a ticker hint is well under half; embedding retrieval is not implemented. The deterministic sentiment fallback commits on fewer than one in ten FiQA sentences and is scored as such; FinBERT accuracy is unmeasured offline. Bearer auth is a local control, not identity management.
 
 ## Where it sits among the other projects
 

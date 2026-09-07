@@ -146,6 +146,7 @@ type EvidenceSearchData struct {
 	Query         string            `json:"query"`
 	Count         int               `json:"count"`
 	RetrievalMode string            `json:"retrieval_mode"`
+	Scorer        string            `json:"scorer"`
 	Results       []EvidenceSnippet `json:"results"`
 }
 
@@ -157,8 +158,9 @@ type ResearchBriefRequest struct {
 }
 
 type BriefSection struct {
-	Title   string   `json:"title"`
-	Bullets []string `json:"bullets"`
+	Title      string   `json:"title"`
+	Bullets    []string `json:"bullets"`
+	References []string `json:"references"`
 }
 
 type ResearchBriefData struct {

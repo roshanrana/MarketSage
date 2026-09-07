@@ -7,24 +7,27 @@ Status: ship-ready
 Validation Command: npm run check
 Model Routing: design=gpt-5.6-sol/high; standard-dev=gpt-5.6-terra/medium; small-dev=gpt-5.6-luna/medium; security-review=gpt-5.6-sol/high
 Approved Stack: Go MCP gateway; Python 3.12+ analytics core with OpenBB and Hugging Face; TypeScript/React/Next.js clients; DuckDB local analytics store; Docker; GitHub Actions
-Current Task: T-012
-Updated: 2026-09-01
+Current Task: T-013
+Updated: 2026-09-07
 
 ## Now
 - M0 through M4 passed validation.
 - M3 analyst workbench is browser-verified on desktop and mobile.
 - M4 hardening is implemented: optional HTTP bearer auth, server-side token forwarding, structured audit events, dependency/security evidence, and license notes.
 - M5 portfolio docs are drafted: README, demo script, and ship report.
+- T-013 offline evaluation harness is in: committed FinanceBench and FiQA fixtures, BM25 retrieval, generated contracts, fault scenarios, MCP prompts, and a README results card checked for drift in CI.
 - Repository license is `AGPL-3.0-only`.
 
 ## Next
-- Commit the initialized repository and push to GitHub.
+- Record a FinBERT run against the FiQA fixture with model downloads enabled and publish it as a recorded, not re-observed, figure.
+- Embedding retrieval behind the same scorer switch, scored on the same fixture.
 
 ## Decisions
 - 2026-08-31: Use the full lifecycle track because MarketSage has multiple components, data/model licensing concerns, MCP contracts, and a portfolio-grade delivery surface. See docs/design/decisions.md#adr-001-use-full-lifecycle-track.
 - 2026-08-31: Propose Go for the MCP gateway, Python for OpenBB/HF analytics, and TypeScript/Next.js for demo clients. See docs/design/decisions.md#adr-002-use-go-mcp-gateway-python-analytics-core-and-typescript-clients.
 - 2026-08-31: Propose DuckDB for local demo analytics and cache persistence. See docs/design/decisions.md#adr-003-use-duckdb-for-local-analytics-and-cache-state.
 - 2026-08-31: Treat OpenBB license compatibility as a first-class design constraint. See docs/design/decisions.md#adr-004-default-to-openbb-compatible-licensing.
+- 2026-09-07: Publish only observed numbers. The README card is generated from metrics/headline.json by the offline harness; anything needing a model download, live data or a key is listed as pending. See docs/tasks/T-013-offline-evaluation-harness.md.
 - 2026-08-31: Use `npm run check` as the local validation command because GNU Make is not installed on this Windows machine; keep `Makefile` as a wrapper for Unix-like reviewer environments.
 
 ## Task Log
@@ -40,6 +43,7 @@ Updated: 2026-09-01
 - T-010: done - Next.js analyst workbench.
 - T-011: done - Observability, security, and operational hardening.
 - T-012: done - Portfolio docs and public repository license are ready.
+- T-013: done - Offline evaluation harness, real evidence corpus, contract generation, MCP prompts, results card.
 
 ## Blockers
 - None.

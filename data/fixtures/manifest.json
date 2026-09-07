@@ -1,0 +1,171 @@
+{
+  "downloaded_on": "2026-09-07",
+  "sources": [
+    {
+      "dataset": "mteb/FinanceBenchRetrieval",
+      "license": "MIT",
+      "config": "corpus",
+      "split": "test",
+      "parquet": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval/resolve/refs%2Fconvert%2Fparquet/corpus/test/0000.parquet",
+      "sha256": "5ed22e1ebf4cd05e5ec63f2d6b20c02b0a27a49312d36a98d050f7f25a60b071",
+      "rows": 145
+    },
+    {
+      "dataset": "mteb/FinanceBenchRetrieval",
+      "license": "MIT",
+      "config": "queries",
+      "split": "test",
+      "parquet": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval/resolve/refs%2Fconvert%2Fparquet/queries/test/0000.parquet",
+      "sha256": "efe5c0149ad2d38f3632c003bb7fb4c5c8f774ced7c63cc1899c5cb62482246a",
+      "rows": 150
+    },
+    {
+      "dataset": "mteb/FinanceBenchRetrieval",
+      "license": "MIT",
+      "config": "qrels",
+      "split": "test",
+      "parquet": "https://huggingface.co/datasets/mteb/FinanceBenchRetrieval/resolve/refs%2Fconvert%2Fparquet/qrels/test/0000.parquet",
+      "sha256": "7e230007de2a290096eed73075a6b4dcd2b08e9c1e7a9b7ce3ce47490d312b24",
+      "rows": 150
+    },
+    {
+      "dataset": "TheFinAI/fiqa-sentiment-classification",
+      "license": "MIT",
+      "config": "default",
+      "split": "test",
+      "parquet": "https://huggingface.co/datasets/TheFinAI/fiqa-sentiment-classification/resolve/refs%2Fconvert%2Fparquet/default/test/0000.parquet",
+      "sha256": "cc2de6ada5afb736b67d11a2ea8b83e3e37a0b45b4213baa96a3c60e7ef05896",
+      "rows": 234
+    }
+  ],
+  "companies": [
+    [
+      "ADBE",
+      "Adobe"
+    ],
+    [
+      "AES",
+      "AES Corporation"
+    ],
+    [
+      "AMCR",
+      "Amcor"
+    ],
+    [
+      "AMD",
+      "AMD"
+    ],
+    [
+      "AMZN",
+      "Amazon"
+    ],
+    [
+      "ATVI",
+      "Activision Blizzard"
+    ],
+    [
+      "AWK",
+      "American Water Works"
+    ],
+    [
+      "AXP",
+      "American Express"
+    ],
+    [
+      "BA",
+      "Boeing"
+    ],
+    [
+      "BBY",
+      "Best Buy"
+    ],
+    [
+      "COST",
+      "Costco"
+    ],
+    [
+      "CVS",
+      "CVS Health"
+    ],
+    [
+      "FL",
+      "Foot Locker"
+    ],
+    [
+      "GIS",
+      "General Mills"
+    ],
+    [
+      "GLW",
+      "Corning"
+    ],
+    [
+      "JNJ",
+      "Johnson & Johnson"
+    ],
+    [
+      "JPM",
+      "JPMorgan Chase"
+    ],
+    [
+      "KHC",
+      "Kraft Heinz"
+    ],
+    [
+      "KO",
+      "Coca-Cola"
+    ],
+    [
+      "LMT",
+      "Lockheed Martin"
+    ],
+    [
+      "MGM",
+      "MGM Resorts"
+    ],
+    [
+      "MMM",
+      "3M"
+    ],
+    [
+      "MSFT",
+      "Microsoft"
+    ],
+    [
+      "NFLX",
+      "Netflix"
+    ],
+    [
+      "NKE",
+      "Nike"
+    ],
+    [
+      "PEP",
+      "PepsiCo"
+    ],
+    [
+      "PFE",
+      "Pfizer"
+    ],
+    [
+      "PYPL",
+      "PayPal"
+    ],
+    [
+      "SQ",
+      "Block"
+    ],
+    [
+      "ULTA",
+      "Ulta Beauty"
+    ],
+    [
+      "VZ",
+      "Verizon"
+    ],
+    [
+      "WMT",
+      "Walmart"
+    ]
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "kpis": {
+    "retrieval_recall_at_5": {
+      "label": "Evidence recall@5, ticker given",
+      "value": "94.7%",
+      "note": "BM25 over 145 FinanceBench filing excerpts, 150 labelled queries; without the ticker hint recall@5 is 44.0% (MRR 0.33, nDCG@10 0.38), so the structured hint does the heavy lifting",
+      "accent": "teal"
+    },
+    "sentiment_coverage": {
+      "label": "Sentiment fallback commits on",
+      "value": "8.1%",
+      "note": "marketsage-lexicon-v0 matched 19 of 234 FiQA test sentences and was right on 89.5% of those; accuracy over every row 8.1% against a 61.5% majority baseline; ECE 0.24; FinBERT is the real path and is pending",
+      "accent": "red"
+    },
+    "brief_grounding": {
+      "label": "Brief claims grounded",
+      "value": "12 / 12",
+      "note": "claim bullets whose reference resolves to a snapshot, evidence id or sentiment hash in the same payload; 5 tickers, 3 with no committed evidence said so instead of borrowing another company's",
+      "accent": "blue"
+    },
+    "contract_conformance": {
+      "label": "Responses conforming to contract",
+      "value": "8 / 8",
+      "note": "every tool response validated against the JSON Schema generated from the Pydantic models; Go decodes the same fixtures with unknown fields forbidden; schema file in sync",
+      "accent": "violet"
+    },
+    "failure_modes": {
+      "label": "Fault injections handled honestly",
+      "value": "9 / 9",
+      "note": "named scenarios that degraded with an explicit warning or failed with a clean error and an audit row; none returned invented data",
+      "accent": "teal"
+    },
+    "audit_completeness": {
+      "label": "Tool calls with an audit row",
+      "value": "8 / 8",
+      "note": "replayed demo chain; 8 ok rows, 0 orphans, 8/8 envelopes carry source, mode, timestamp and caveats",
+      "accent": "blue"
+    }
+  },
+  "bars": {
+    "title": "FinanceBench recall by scorer and hint (150 queries)",
+    "rows": [
+      {
+        "label": "BM25, ticker given @1",
+        "value": 47.3,
+        "max": 100,
+        "display": "47.3%",
+        "accent": "teal"
+      },
+      {
+        "label": "BM25, ticker given @5",
+        "value": 94.7,
+        "max": 100,
+        "display": "94.7%",
+        "accent": "teal"
+      },
+      {
+        "label": "BM25, ticker given @10",
+        "value": 100.0,
+        "max": 100,
+        "display": "100.0%",
+        "accent": "teal"
+      },
+      {
+        "label": "BM25, no hint @1",
+        "value": 20.7,
+        "max": 100,
+        "display": "20.7%",
+        "accent": "blue"
+      },
+      {
+        "label": "BM25, no hint @5",
+        "value": 44.0,
+        "max": 100,
+        "display": "44.0%",
+        "accent": "blue"
+      },
+      {
+        "label": "BM25, no hint @10",
+        "value": 60.7,
+        "max": 100,
+        "display": "60.7%",
+        "accent": "blue"
+      },
+      {
+        "label": "Term overlap, no hint @1",
+        "value": 12.0,
+        "max": 100,
+        "display": "12.0%",
+        "accent": "amber"
+      },
+      {
+        "label": "Term overlap, no hint @5",
+        "value": 26.7,
+        "max": 100,
+        "display": "26.7%",
+        "accent": "amber"
+      },
+      {
+        "label": "Term overlap, no hint @10",
+        "value": 38.0,
+        "max": 100,
+        "display": "38.0%",
+        "accent": "amber"
+      }
+    ]
+  },
+  "facts": {
+    "title": "Observed offline, and what is not",
+    "rows": [
+      {
+        "label": "Committed fixtures",
+        "value": "FinanceBenchRetrieval corpus/test 145 rows, FinanceBenchRetrieval queries/test 150 rows, FinanceBenchRetrieval qrels/test 150 rows, fiqa-sentiment-classification default/test 234 rows; MIT licensed, sha256-pinned in data/fixtures/manifest.json",
+        "status": "ok"
+      },
+      {
+        "label": "Sentiment confidence calibration",
+        "value": "ECE 0.24 on 19 committed predictions; the confidence field is a term-count formula, not a probability",
+        "status": "ok"
+      },
+      {
+        "label": "Evidence coverage",
+        "value": "2 of 5 seeded tickers have filing excerpts in the corpus; the rest get an explicit coverage warning",
+        "status": "ok"
+      },
+      {
+        "label": "Latency budget (NFR-008)",
+        "value": "8 of 8 tools under 2 s p95 in-process over 5 runs; timings kept in metrics/eval-latest.json, not here, because they vary by host",
+        "status": "ok"
+      },
+      {
+        "label": "MCP surface",
+        "value": "7 tools, 4 prompts, 1 resource template, read from `marketsage-mcp --describe`",
+        "status": "ok"
+      },
+      {
+        "label": "FinBERT sentiment accuracy",
+        "value": "pending: needs MARKETSAGE_ENABLE_MODEL_DOWNLOADS=true and a model download; the offline harness scores the lexicon fallback only",
+        "status": "pending"
+      },
+      {
+        "label": "Embedding retrieval",
+        "value": "pending: bge-small / MiniLM path is not implemented; lexical scorers only",
+        "status": "pending"
+      },
+      {
+        "label": "Live OpenBB market data",
+        "value": "pending: seeded prices are illustrative and are not scored; live mode needs the optional OpenBB dependency and provider configuration",
+        "status": "pending"
+      }
+    ]
+  }
+}

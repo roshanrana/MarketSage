@@ -40,7 +40,7 @@ Enter a ticker, choose `hybrid` mode, and click `Run Brief`. Without OpenBB inst
 | `openbb_adapter.py` | The OpenBB-ready market boundary; seeded, hybrid and live modes with explicit warnings on fallback |
 | `datasets.py` | The Hugging Face dataset manifest and status reporting |
 | `sentiment.py` | Deterministic sentiment by default; FinBERT behind `MARKETSAGE_ENABLE_MODEL_DOWNLOADS` |
-| `retrieval.py` | Lexical evidence search over the seeded corpus |
+| `retrieval.py` | BM25 evidence search over the committed FinanceBench corpus, with the term-overlap scorer kept for comparison |
 | `briefs.py` | Research-brief orchestration: snapshot, trend, evidence, sentiment, caveats, saved run |
 | `storage.py`, `repo.py` | DuckDB persistence for manifests, runs and audit events |
 | `config.py` | Every mode and switch, from environment |
