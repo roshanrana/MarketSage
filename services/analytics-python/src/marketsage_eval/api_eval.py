@@ -257,5 +257,6 @@ def _pin(value: Any, scrub: tuple[str, ...]) -> Any:
     if isinstance(value, str):
         for path in scrub:
             value = value.replace(path, "<data_dir>")
-        return value
+        # Windows writes a backslash after the scrubbed prefix; keep fixtures platform-neutral.
+        return value.replace("<data_dir>\\", "<data_dir>/")
     return value

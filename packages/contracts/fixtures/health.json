@@ -17,7 +17,7 @@
       {
         "name": "duckdb",
         "status": "ok",
-        "detail": "Database ready at <data_dir>\\marketsage.duckdb"
+        "detail": "Database ready at <data_dir>/marketsage.duckdb"
       },
       {
         "name": "openbb",
