@@ -1,0 +1,25 @@
+# Vendored / installed dependencies
+node_modules/
+.venv/
+
+# Build output
+.next/
+dist/
+bin/
+
+# Generated graph output
+graphify-out/
+
+# Committed data corpus (FinanceBench + FiQA fixtures), not source code
+data/fixtures/
+
+# Generated contract fixtures
+packages/contracts/fixtures/
+
+# Lockfiles
+package-lock.json
+services/analytics-python/uv.lock
+
+# Caches
+.pytest_cache/
+.ruff_cache/

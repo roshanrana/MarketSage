@@ -119,6 +119,7 @@ The analytics API is open for local demos. Set `MARKETSAGE_HTTP_TOKEN` to requir
 | [`docs/ship-report.md`](docs/ship-report.md) | Validation evidence and known limitations |
 | [`docs/tasks/T-013-offline-evaluation-harness.md`](docs/tasks/T-013-offline-evaluation-harness.md) | What the evaluation harness measures, how, and what it deliberately leaves pending |
 | [`docs/design/`](docs/design/) | Requirements, high-level design, low-level design, execution plan, decisions |
+| [`docs/graph/README.md`](docs/graph/README.md) | The codebase knowledge graph (graphify): how to build it, query it, and what it excludes |
 
 ## License
 

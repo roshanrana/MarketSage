@@ -72,6 +72,10 @@ Optional bearer auth; no stdout logging in stdio mode; `npm audit`, `uv pip chec
 
 Docs, `ruff`, `pytest`, `go fmt`/`test`/`vet`, the MCP CLI smoke, the Next.js build, a workspace check. Four languages, one command, and the protocol boundary is exercised rather than mocked.
 
+### 8. Query the code graph (`docs/graph/README.md`)
+
+A tree-sitter knowledge graph (graphify, offline, no API key) over the Go, Python and TypeScript source: 1199 nodes, 2180 edges, 90 communities. `graphify explain "server.go"` shows the MCP tool registry's 21 connections in one call; `graphify affected "models.py" --depth 2` lists the 14 files that import the shared Pydantic contract models, the blast radius for a schema change. `docs/graph/README.md` has the three queries with real output, what `.graphifyignore` excludes, and the one thing the graph cannot see (it does not trace the TypeScript-to-Python HTTP boundary).
+
 ## Things worth noticing
 
 - **The fallback warns.** Hybrid mode never silently substitutes seeded data for live; the warning is in the payload, so a downstream model or analyst cannot miss it.

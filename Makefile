@@ -1,4 +1,4 @@
-.PHONY: check audit-deps demo-mcp dev-analytics dev-mcp eval eval-check contracts card card-check
+.PHONY: check audit-deps demo-mcp dev-analytics dev-mcp eval eval-check contracts card card-check graph
 
 check:
 	npm run check
@@ -33,3 +33,7 @@ card: eval
 
 card-check:
 	npm run card:check
+
+# Rebuild the codebase graph (docs/graph/README.md); offline, no API cost.
+graph:
+	graphify update . && graphify cluster-only . --no-viz --no-label
